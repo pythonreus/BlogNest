@@ -1,0 +1,34 @@
+/* Custom styles to complement Tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Admin color scheme */
+.bg-admin-blue {
+    background-color: #1e40af;
+}
+
+.text-admin-blue {
+    color: #1e40af;
+}
+
+.hover\:text-admin-blue\/80:hover {
+    color: rgba(30, 64, 175, 0.8);
+}
+
+/* Line clamping for post excerpts */
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .prose {
+        padding: 0 1rem;
+    }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogNest - Testimonies</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bg-admin-blue { background-color: #3a5683; }
+        .text-admin-blue { color: #3a5683; }
+        .border-admin-blue { border-color: #3a5683; }
+        .bg-admin-cream { background-color: #f5f3ef; }
+        .text-admin-cream { color: #f5f3ef; }
+        .bg-admin-sage { background-color: #7a918d; }
+        .text-admin-sage { color: #7a918d; }
+        .border-admin-sage { border-color: #7a918d; }
+        .bg-admin-sand { background-color: #d4b483; }
+        .text-admin-sand { color: #d4b483; }
+        
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-admin-cream">
+    <!-- Navigation -->
+    <nav class="bg-admin-blue text-admin-cream shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-book-open mr-3 text-admin-sand"></i>
+                    <span class="font-serif">BlogNest</span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="hover:text-admin-sand transition-colors font-medium">Home</a>
+                    <a href="testimonies.html" class="hover:text-admin-sand transition-colors font-medium">Testimonies</a>
+                    <button class="ml-4 px-4 py-2 bg-admin-sand text-admin-blue rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Hero Section -->
+        <section class="mb-12 p-8 rounded-lg bg-gradient-to-r from-admin-blue to-admin-sage text-white">
+            <div class="max-w-2xl mx-auto text-center">
+                <h1 class="text-4xl font-bold mb-4 text-admin-blue font-serif">Stories of Faith & Transformation</h1>
+                <p class="text-lg mb-6 text-admin-sage opacity-90">Discover powerful testimonies of God's work in people's lives.</p>
+               
+            </div>
+        </section>
+
+        <!-- Testimonies Grid -->
+        <div id="testimonies-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Loading state -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover-scale border border-gray-100 col-span-3">
+                <div class="h-48 bg-admin-sage flex items-center justify-center text-white">
+                    <i class="fas fa-book-open fa-3x opacity-50"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="text-xs px-3 py-1 bg-admin-sand text-admin-blue rounded-full font-medium">Loading</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-admin-blue font-serif">Loading Testimonies...</h3>
+                    <p class="text-gray-600 mb-4">Please wait while we load these inspiring stories for you.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+  
+
+    <!-- Footer -->
+    <footer class="bg-admin-blue text-admin-cream py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-book-open mr-3 text-admin-sand"></i>
+                        <span class="font-serif">BlogNest</span>
+                    </a>
+                    <p class="mt-2 text-sm opacity-80">Spiritual nourishment for your journey.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-admin-blue-dark flex items-center justify-center hover:text-admin-sand transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-admin-blue-dark flex items-center justify-center hover:text-admin-sand transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-admin-blue-dark flex items-center justify-center hover:text-admin-sand transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-admin-blue-dark mt-8 pt-6 text-sm text-center opacity-80">
+                <p>&copy; 2025 BlogNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Load testimonies when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchTestimonies();
+        });
+
+        async function fetchTestimonies() {
+            try {
+                const response = await fetch('http://localhost:3000/api/posts?category=testimony');
+                if (!response.ok) throw new Error('Failed to fetch testimonies');
+                
+                const data = await response.json();
+                renderTestimonies(data.posts);
+            } catch (error) {
+                console.error('Error fetching testimonies:', error);
+                document.getElementById('testimonies-container').innerHTML = `
+                    <div class="col-span-3 text-center py-12">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-red-200 max-w-md mx-auto">
+                            <i class="fas fa-exclamation-circle text-red-500 text-4xl mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2 text-admin-blue">Error Loading Testimonies</h3>
+                            <p class="text-gray-600 mb-4">Failed to load testimonies. Please try again later.</p>
+                            <button onclick="fetchTestimonies()" class="px-4 py-2 bg-admin-blue text-white rounded hover:bg-admin-blue/80 transition-colors">
+                                Retry
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function renderTestimonies(testimonies) {
+            const container = document.getElementById('testimonies-container');
+            
+            if (testimonies.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-3 text-center py-12">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 max-w-md mx-auto">
+                            <i class="fas fa-book-open text-admin-sage text-4xl mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2 text-admin-blue">No Testimonies Found</h3>
+                            <p class="text-gray-600 mb-4">Check back later for inspiring stories of faith.</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = testimonies.map(testimony => `
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover-scale border border-gray-100">
+                    <div class="h-48 bg-admin-sand flex items-center justify-center text-white">
+                        <i class="fas fa-hands-praying fa-3x opacity-70"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="text-xs px-3 py-1 bg-admin-sand/10 text-amber-800 rounded-full font-medium">
+                                Testimony
+                            </span>
+                            <span class="text-xs text-gray-500 ml-auto">
+                                ${new Date(testimony.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-admin-blue font-serif hover:text-admin-sage transition-colors">
+                            <a href="post.html?id=${testimony._id}">${testimony.post_title}</a>
+                        </h3>
+                        <div class="flex items-center text-sm text-admin-sage mb-4">
+                            <span class="mr-3">By ${testimony.post_author}</span>
+                        </div>
+                        <p class="text-gray-600 line-clamp-3 mb-5">${testimony.post_content.substring(0, 150)}...</p>
+                        <a href="post.html?id=${testimony._id}" 
+                           class="inline-flex items-center text-admin-sage hover:text-admin-blue transition-colors font-medium">
+                            Read full story
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

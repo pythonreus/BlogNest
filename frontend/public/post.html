@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogNest - Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bg-admin-blue { background-color: #3a5683; }
+        .text-admin-blue { color: #3a5683; }
+        .border-admin-blue { border-color: #3a5683; }
+        .bg-admin-cream { background-color: #f5f3ef; }
+        .text-admin-cream { color: #f5f3ef; }
+        .bg-admin-sage { background-color: #7a918d; }
+        .text-admin-sage { color: #7a918d; }
+        .border-admin-sage { border-color: #7a918d; }
+        .bg-admin-sand { background-color: #d4b483; }
+        .text-admin-sand { color: #d4b483; }
+        
+        .prose {
+            max-width: 100%;
+            line-height: 1.6;
+            color: #374151;
+        }
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #3a5683;
+        }
+        .prose p {
+            margin-bottom: 1.25rem;
+        }
+        .prose a {
+            color: #3a5683;
+            text-decoration: underline;
+        }
+        .prose a:hover {
+            color: #7a918d;
+        }
+    </style>
+</head>
+<body class="bg-admin-cream">
+    <!-- Navigation -->
+    <nav class="bg-admin-blue text-admin-cream shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-book-open mr-3 text-admin-sand"></i>
+                    <span class="font-serif">BlogNest</span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="hover:text-admin-sand transition-colors font-medium">Home</a>
+                    <a href="testimonies.html" class="hover:text-admin-sand transition-colors font-medium">Testimonies</a>
+                    <button class="ml-4 px-4 py-2 bg-admin-sand text-admin-blue rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Article Header -->
+        <div class="mb-8 text-center">
+            <div class="mb-4">
+                <span id="post-category" class="px-4 py-2 text-sm font-medium rounded-full bg-admin-blue/10 text-admin-blue">
+                    Devotional
+                </span>
+            </div>
+            <h1 id="post-title" class="text-4xl font-bold text-admin-blue mb-3 font-serif">Post Title Goes Here</h1>
+            <div class="flex items-center justify-center space-x-4 text-admin-sage">
+                <span id="post-author">By Author Name</span>
+                <span>•</span>
+                <span id="post-date">June 15, 2023</span>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="bg-white rounded-xl shadow-md overflow-hidden border border-admin-sage/20">
+            <!-- Featured Image -->
+            <div id="post-image" class="h-64 bg-admin-sage flex items-center justify-center text-white">
+                <i class="fas fa-book-open fa-3x opacity-70"></i>
+            </div>
+            
+            <!-- Content -->
+            <div id="post-content" class="p-8 pt-6 prose max-w-none">
+                <!-- Content will be loaded here via JavaScript -->
+                <div class="flex justify-center py-12">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-admin-blue"></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="p-6 border-t border-admin-sage/20 bg-admin-cream/50">
+                <a href="index.html" class="inline-flex items-center text-admin-sage hover:text-admin-blue transition-colors font-medium">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Back to all posts
+                </a>
+            </div>
+        </article>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="bg-admin-blue text-admin-cream py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-book-open mr-3 text-admin-sand"></i>
+                        <span class="font-serif">BlogNest</span>
+                    </a>
+                    <p class="mt-2 text-sm opacity-80">Spiritual nourishment for your journey.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-admin-blue-dark flex items-center justify-center hover:text-admin-sand transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-admin-blue-dark flex items-center justify-center hover:text-admin-sand transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-admin-blue-dark flex items-center justify-center hover:text-admin-sand transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-admin-blue-dark mt-8 pt-6 text-sm text-center opacity-80">
+                <p>&copy; 2025 BlogNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Load single post data when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const postId = new URLSearchParams(window.location.search).get('id');
+            if (postId) {
+                fetchPost(postId);
+            }
+        });
+
+        async function fetchPost(postId) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/posts/${postId}`);
+                if (!response.ok) throw new Error('Failed to fetch post');
+                
+                const data = await response.json();
+                const post = data.post;
+                
+                // Update the page with post data
+                document.getElementById('post-title').textContent = post.post_title;
+                document.getElementById('post-author').textContent = post.post_author;
+                document.getElementById('post-category').textContent = formatCategory(post.post_category);
+                document.getElementById('post-category').className = `px-4 py-2 text-sm font-medium rounded-full ${getCategoryColor(post.post_category)}`;
+                document.getElementById('post-date').textContent = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                
+                // Set appropriate image background based on category
+                const postImage = document.getElementById('post-image');
+                postImage.className = `h-64 ${getCategoryImageBg(post.post_category)} flex items-center justify-center text-white`;
+                postImage.innerHTML = `<i class="${getCategoryIcon(post.post_category)} fa-3x opacity-70"></i>`;
+                
+                // Format content with proper HTML
+                document.getElementById('post-content').innerHTML = `
+                    <p class="lead">${post.post_content.substring(0, 200)}</p>
+                    ${post.post_content.substring(200).split('\n').map(para => para.trim() ? `<p>${para}</p>` : '').join('')}
+                `;
+            } catch (error) {
+                console.error('Error fetching post:', error);
+                document.getElementById('post-content').innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-red-200 max-w-md mx-auto">
+                            <i class="fas fa-exclamation-circle text-red-500 text-4xl mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2 text-admin-blue">Error Loading Post</h3>
+                            <p class="text-gray-600 mb-4">Failed to load post content. Please try again later.</p>
+                            <a href="index.html" class="px-4 py-2 bg-admin-blue text-white rounded hover:bg-admin-blue/80 transition-colors inline-block">
+                                Back to Home
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function getCategoryColor(category) {
+            const colors = {
+                'devotional': 'bg-admin-blue/10 text-admin-blue',
+                'bible-study': 'bg-admin-sage/10 text-admin-sage',
+                'sermon': 'bg-purple-100 text-purple-800',
+                'testimony': 'bg-admin-sand/10 text-amber-800'
+            };
+            return colors[category] || 'bg-gray-100 text-gray-800';
+        }
+
+        function getCategoryImageBg(category) {
+            const colors = {
+                'devotional': 'bg-admin-blue',
+                'bible-study': 'bg-admin-sage',
+                'sermon': 'bg-purple-600',
+                'testimony': 'bg-admin-sand'
+            };
+            return colors[category] || 'bg-gray-600';
+        }
+
+        function getCategoryIcon(category) {
+            const icons = {
+                'devotional': 'fas fa-pray',
+                'bible-study': 'fas fa-bible',
+                'sermon': 'fas fa-microphone-alt',
+                'testimony': 'fas fa-hand-holding-heart'
+            };
+            return icons[category] || 'fas fa-book-open';
+        }
+
+        function formatCategory(category) {
+            const names = {
+                'devotional': 'Devotional',
+                'bible-study': 'Bible Study',
+                'sermon': 'Sermon',
+                'testimony': 'Testimony'
+            };
+            return names[category] || category;
+        }
+    </script>
+</body>
+</html>

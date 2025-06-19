@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Grace Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'admin-blue': '#3a5683',
+                        'admin-cream': '#f5f3ef',
+                        'admin-sage': '#7a918d',
+                        'admin-sand': '#d4b483'
+                    },
+                    fontFamily: {
+                        'sans': ['"Open Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-admin-cream">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-admin-blue text-white shadow-lg">
+            <div class="p-6 flex items-center space-x-3 border-b border-admin-sage/20">
+                <div class="text-2xl">
+                    <i class="fas fa-cross"></i>
+                </div>
+                <h1 class="text-xl font-semibold">Grace Notes Admin</h1>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-admin-blue/80 transition" id="nav-dashboard">
+                            <i class="fas fa-chart-line mr-3 text-admin-sand"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-3 rounded-lg bg-white/10" id="nav-posts">
+                            <i class="fas fa-book-open mr-3 text-admin-sand"></i>
+                            <span>Manage Posts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center p-3 rounded-lg hover:bg-admin-blue/80 transition" id="nav-new">
+                            <i class="fas fa-plus-circle mr-3 text-admin-sand"></i>
+                            <span>Create New</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto p-8">
+            <!-- Posts Management Section -->
+            <div id="posts-section">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-800">Manage Posts</h2>
+                    <div class="flex space-x-4">
+                        <select id="category-filter" class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-admin-blue">
+                            <option value="">All Categories</option>
+                            <option value="devotional">Devotional</option>
+                            <option value="bible-study">Bible Study</option>
+                            <option value="sermon">Sermon</option>
+                            <option value="testimony">Testimony</option>
+                        </select>
+                        <button id="new-post-btn" class="px-4 py-2 bg-admin-blue text-white rounded-md hover:bg-admin-blue/90 transition flex items-center">
+                            <i class="fas fa-plus mr-2"></i> New Post
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Posts Table -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="posts-table">
+                            <!-- Posts will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-between items-center mt-4">
+                    <button id="prev-page" class="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50" disabled>
+                        Previous
+                    </button>
+                    <div id="page-info" class="text-sm text-gray-600">Page 1 of 1</div>
+                    <button id="next-page" class="px-4 py-2 border border-gray-300 rounded-md disabled:opacity-50" disabled>
+                        Next
+                    </button>
+                </div>
+            </div>
+
+            <!-- New Post/Edit Post Section -->
+            <div id="edit-section" class="hidden">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-semibold text-gray-800" id="form-title">New Post</h2>
+                        <button id="cancel-edit" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <form id="post-form">
+                        <div class="mb-4">
+                            <label for="post-title" class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                            <input type="text" id="post-title" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-admin-blue">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="post-author" class="block text-sm font-medium text-gray-700 mb-1">Author</label>
+                                <input type="text" id="post-author" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-admin-blue">
+                            </div>
+                            <div>
+                                <label for="post-category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                                <select id="post-category" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-admin-blue">
+                                    <option value="devotional">Devotional</option>
+                                    <option value="bible-study">Bible Study</option>
+                                    <option value="sermon">Sermon</option>
+                                    <option value="testimony">Testimony</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="post-content" class="block text-sm font-medium text-gray-700 mb-1">Content</label>
+                            <textarea id="post-content" rows="10" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-admin-blue"></textarea>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="post-visibility" class="h-4 w-4 text-admin-blue focus:ring-admin-blue border-gray-300 rounded">
+                                <label for="post-visibility" class="ml-2 block text-sm text-gray-700">Make post visible</label>
+                            </div>
+                            <button type="submit" class="px-4 py-2 bg-admin-blue text-white rounded-md hover:bg-admin-blue/90 transition">
+                                Save Post
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Single Post View -->
+    <div id="post-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="modal-post-title" class="text-2xl font-bold text-gray-800"></h2>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4 mb-4">
+                    <span id="modal-post-author" class="text-gray-600"></span>
+                    <span id="modal-post-category" class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800"></span>
+                    <span id="modal-post-date" class="text-sm text-gray-500"></span>
+                </div>
+                <div id="modal-post-content" class="prose max-w-none mb-6"></div>
+                <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+                    <button id="edit-post-btn" class="px-4 py-2 bg-admin-blue text-white rounded-md hover:bg-admin-blue/90 transition">
+                        <i class="fas fa-edit mr-2"></i> Edit
+                    </button>
+                    <button id="toggle-visibility-btn" class="px-4 py-2 bg-admin-sage text-white rounded-md hover:bg-admin-sage/90 transition">
+                        <i class="fas fa-eye mr-2"></i> Toggle Visibility
+                    </button>
+                    <button id="delete-post-btn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
+                        <i class="fas fa-trash mr-2"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,27 +1,66 @@
 const postModel = require("../models/postModel.js"); // load my postModel
 
 // implement the functions
-const getPosts = async (req,res) => {
-    // basically getting all the posts, with some filtering applied and pagination
+const getPosts = async (req, res) => {
     console.log("received the request");
-    try{
-        const  { category,page = 1,limit = 10} = req.query;
+    try {
+        const { category, page = 1, limit = 10, search } = req.query;
 
         const query = {};
 
-        if(category){
+        // Filter by category
+        if (category && category !== 'all') {
             query.post_category = category;
         }
 
-        const posts = await postModel.find(query).sort({createdAt: -1}).skip ((page - 1) * limit).limit(parseInt(limit));
+        // Search by title or content
+        if (search) {
+            query.$or = [
+                { post_title: { $regex: search, $options: 'i' } }, // case-insensitive
+                { post_content: { $regex: search, $options: 'i' } }
+            ];
+        }
+
         const totalPosts = await postModel.countDocuments(query);
 
-        return res.status(200).json({message:"Posts successfully retrieved",currentPage: page,totalPages: Math.ceil(totalPosts/limit),totalPosts,posts});
+        const posts = await postModel.find(query)
+            .sort({ createdAt: -1 })
+            .skip((page - 1) * parseInt(limit))
+            .limit(parseInt(limit));
 
-    }catch(error){
-         return res.status(500).json({ message: "Internal Server Error when retrieving the posts" });
+        return res.status(200).json({
+            message: "Posts successfully retrieved",
+            currentPage: parseInt(page),
+            totalPages: Math.ceil(totalPosts / limit),
+            totalPosts,
+            posts
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal Server Error when retrieving the posts" });
     }
 };
+
+
+const getNewPosts = async (req, res) => {
+    console.log("received the request");
+    try {
+        // Fetch latest 3 posts regardless of query params
+        const posts = await postModel.find()
+            .sort({ createdAt: -1 })  // newest first
+            .limit(3);
+
+        return res.status(200).json({
+            message: "Latest 3 posts successfully retrieved",
+            totalPosts: posts.length,
+            posts
+        });
+    } catch (error) {
+        return res.status(500).json({ message: "Internal Server Error when retrieving the posts" });
+    }
+};
+
 
 const getPost = async (req,res) => {
     console.log("I am called");
@@ -138,5 +177,5 @@ const createPost = async (req,res) => {
 
 
 //exporting the functions
-module.exports = { getPosts, getPost, updatePost, updateVisibility, deletePost, createPost};
+module.exports = { getPosts, getPost,getNewPosts, updatePost, updateVisibility, deletePost, createPost};
 

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of Artificial Intelligence | Thoughtful Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e'
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            900: '#0f172a'
+                        },
+                        accent: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .category-tech { background-color: #dbeafe; color: #1e40af; }
+        .category-science { background-color: #d1fae5; color: #065f46; }
+        .category-lifestyle { background-color: #f3e8ff; color: #6b21a8; }
+        .category-research { background-color: #fef3c7; color: #92400e; }
+        .category-news { background-color: #fee2e2; color: #991b1b; }
+        .post-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        .post-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #334155;
+        }
+        .post-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+        .post-content ul, .post-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        .post-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .post-content blockquote {
+            border-left: 4px solid #0ea5e9;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #64748b;
+        }
+        .post-content code {
+            background-color: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            color: #0f172a;
+        }
+        .post-content pre {
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .author-card {
+            transition: all 0.3s ease;
+        }
+        .author-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-secondary-50 text-secondary-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-10 border-b border-secondary-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="home.html" class="text-2xl font-bold text-primary-700">Thoughtful<span class="text-accent-600">.</span></a>
+                </div>
+                
+                <div class="flex items-center md:hidden">
+                    <button class="text-secondary-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Article Header -->
+        <article class="bg-white rounded-xl shadow-sm overflow-hidden border border-secondary-100 mb-8">
+            <div class="p-8">
+                <div class="flex flex-wrap items-center justify-between mb-4">
+                    <span class="category-tech text-xs font-semibold px-3 py-1 rounded-full mb-2">Technology</span>
+                    <div class="flex items-center text-secondary-500 text-sm">
+                        <span><i class="far fa-clock mr-1"></i>5 min read</span>
+                        <span class="mx-2">•</span>
+                        <span><i class="far fa-calendar mr-1"></i>June 15, 2023</span>
+                    </div>
+                </div>
+                
+                <h1 class="text-3xl md:text-4xl font-bold text-secondary-800 mb-4">The Future of Artificial Intelligence: Transformative Potential and Ethical Considerations</h1>
+                
+                <div class="flex items-center mt-6">
+                    <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 mr-4">
+                        <i class="fas fa-user text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-secondary-800 user-name">Alex Johnson</p>
+                        <p class="text-secondary-500 text-sm user-title">Senior Technology Analyst</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Article Content -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Article Body -->
+            <div class="lg:w-full">
+                <div class="bg-white rounded-xl shadow-sm p-8 border border-secondary-100 post-content whitespace-pre-wrap">
+                    
+                    
+                </div>
+
+                <!-- Social Sharing -->
+                    <div class="mt-6 flex items-center justify-between pt-6 border-t border-secondary-100">
+                      
+                        <a href="home.html" class="text-primary-600 hover:text-primary-700 font-medium flex items-center">
+                            <i class="fas fa-arrow-left mr-2"></i> Back to Blog
+                        </a>
+                    </div> 
+             
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-900 text-white py-12 mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <span class="text-2xl font-bold text-white">Thoughtful<span class="text-accent-500">.</span></span>
+                    <p class="text-secondary-300 mt-4 max-w-md">A personal blog sharing thoughts, research, and insights on technology, science, lifestyle, and current events.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-secondary-300 hover:text-white transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-secondary-300 hover:text-white transition">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-secondary-300 hover:text-white transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="border-t border-secondary-700 mt-8 pt-8 text-center text-secondary-400 text-sm">
+                <p>&copy; 2025 Thoughtful Blog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('postid');
+    console.log('Post ID:', postId);
+
+    if (!postId) {
+        window.location.href = 'home.html';
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/posts/${postId}`);
+        if (!response.ok) throw new Error('Post not found');
+
+        const data = await response.json();
+        const post = data.post;
+        console.log('Fetched post:', post);
+
+        // --- CATEGORY BADGE ---
+        const categoryBadge = document.querySelector('.category-tech');
+        const categoryClassMap = {
+            'technology': 'category-tech',
+            'thoughts': 'category-science',
+            'history': 'category-lifestyle',
+            'theology': 'category-research',
+            'news': 'category-news'
+        };
+        const categoryDisplayMap = {
+            'technology': 'Technology',
+            'thoughts': 'Thoughts',
+            'history': 'History',
+            'theology': 'Theology',
+            'news': 'News'
+        };
+
+        const categoryClass = categoryClassMap[post.post_category?.toLowerCase()] || 'category-tech';
+        const categoryName = categoryDisplayMap[post.post_category?.toLowerCase()] || post.post_category;
+
+        if (categoryBadge) {
+            categoryBadge.className = `${categoryClass} text-xs font-semibold px-3 py-1 rounded-full mb-2`;
+            categoryBadge.textContent = categoryName;
+        }
+
+        // --- TITLE ---
+        const titleEl = document.querySelector('h1');
+        if (titleEl) titleEl.textContent = post.post_title;
+
+        // --- AUTHOR INFO ---
+        const authorNameEl = document.querySelector('.user-name');
+        const authorRoleEl = document.querySelector('.user-title');
+        if (authorNameEl) authorNameEl.textContent = post.post_author || 'Anonymous';
+        if (authorRoleEl) authorRoleEl.textContent = "Computer Science Student";
+
+        // --- DATE ---
+        const dateIcon = document.querySelector('.far.fa-calendar');
+        if (dateIcon && dateIcon.parentElement) {
+            const dateContainer = dateIcon.parentElement;
+            dateContainer.innerHTML = `<i class="far fa-calendar mr-1"></i>${new Date(post.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            })}`;
+        }
+
+        // --- READ TIME ---
+        const clockIcon = document.querySelector('.far.fa-clock');
+        if (clockIcon && clockIcon.parentElement) {
+            const clockContainer = clockIcon.parentElement;
+            clockContainer.innerHTML = `<i class="far fa-clock mr-1"></i>${post.read_time || 4} min read`;
+        }
+
+        // --- CONTENT ---
+        const postContentEl = document.querySelector('.post-content');
+        if (postContentEl) postContentEl.innerHTML = post.post_content;
+
+    } catch (error) {
+        console.error('Error fetching post:', error);
+        // Only redirect if truly not found — not for DOM errors
+        if (error.message === 'Post not found') {
+            window.location.href = 'home.html';
+        }
+    }
+});
+</script>
+
+
+
+</body>
+</html>

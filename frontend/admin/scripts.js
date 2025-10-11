@@ -364,20 +364,21 @@ async function togglePostVisibility(postId, currentVisibility) {
 // Helper functions
 function getCategoryColor(category) {
     const colors = {
-        'devotional': 'bg-blue-100 text-blue-800',
-        'bible-study': 'bg-purple-100 text-purple-800',
-        'sermon': 'bg-green-100 text-green-800',
-        'testimony': 'bg-red-100 text-red-800'
+        'history': 'bg-blue-100 text-blue-800',
+        'technology': 'bg-purple-100 text-purple-800',
+        'thoughts': 'bg-green-100 text-green-800',
+        'theology': 'bg-red-100 text-red-800'
     };
     return colors[category] || 'bg-gray-100 text-gray-800';
 }
 
 function formatCategory(category) {
     const names = {
-        'devotional': 'Devotional',
-        'bible-study': 'Bible Study',
-        'sermon': 'Sermon',
-        'testimony': 'Testimony'
+        'technology': 'Technology',
+        'thoughts': 'Thoughts',
+        'theology': 'Theology',
+        'history': 'History',
+        'news': 'News'
     };
     return names[category] || category;
 }

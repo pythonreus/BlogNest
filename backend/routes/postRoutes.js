@@ -1,9 +1,10 @@
 const express = require("express"); // load the express library
 const router = express.Router(); // this allows us to define and use routes
-const {getPosts, getPost, updatePost, updateVisibility, deletePost, createPost} = require('../controllers/postController.js');
+const {getPosts, getPost, getNewPosts, updatePost, updateVisibility, deletePost, createPost} = require('../controllers/postController.js');
 
 //router is basically like a mini app
 router.get('/', getPosts); // get all the posts in paginated format
+router.get('/new_posts',getNewPosts);// the latest 3 posts
 router.get('/:post_id', getPost); // get a single post
 router.put('/:post_id', updatePost); // update a post
 router.put('/:post_id/visibility', updateVisibility); // updating if the psot should be visible or not

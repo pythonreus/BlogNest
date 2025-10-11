@@ -404,7 +404,8 @@ document.getElementById('newsletterSubscribe').addEventListener('click', async (
     }
 
     try {
-        const response = await fetch('http://localhost:3000/api/newsletter', {
+        const BASE_URL = window.location.origin + '/api';
+        const response = await fetch(`${BASE_URL}/newsletter`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email })

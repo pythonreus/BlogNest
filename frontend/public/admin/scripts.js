@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:3000/api/posts';
+const API_BASE_URL = window.location.origin + '/api/posts';
 let currentPage = 1;
 const postsPerPage = 10;
 let totalPosts = 0;

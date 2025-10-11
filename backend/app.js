@@ -22,4 +22,8 @@ app.get('/post/:postid', (req, res) => {
 });
 
 
+app.get('/admin/dashboard/Yehovah', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/public', 'single_post.html'));
+});
+
 module.exports = app; 

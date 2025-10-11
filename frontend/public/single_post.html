@@ -214,6 +214,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('postid');
     console.log('Post ID:', postId);
+    const API_BASE_URL = window.location.origin + '/api/posts';
 
     if (!postId) {
         window.location.href = 'home.html';
@@ -221,7 +222,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/posts/${postId}`);
+        const response = await fetch(`${API_BASE_URL}/${postId}`);
         if (!response.ok) throw new Error('Post not found');
 
         const data = await response.json();

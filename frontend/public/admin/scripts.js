@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = window.location.origin + '/api/posts';
+const API_BASE_URL = 'https://blognest-hcer.onrender.com/api/posts';
 let currentPage = 1;
 const postsPerPage = 10;
 let totalPosts = 0;

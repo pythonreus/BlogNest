@@ -14,12 +14,12 @@ app.use('/api/newsletter', newsletterRoutes);
 
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 
-app.get('/admin/dashboard/Yehovah', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/public', 'index.html'));
-});
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/public', 'home.html'));
+});
+
+app.get('/admin/dashboard/Yehovah', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/public', 'index.html'));
 });
 
 app.get('/post/:postid', (req, res) => {

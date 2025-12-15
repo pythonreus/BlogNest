@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/admin/dashboard/Yehovah', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/public', 'admin.html'));
 });
 
 app.get('/post/:postid', (req, res) => {
